@@ -1,0 +1,39 @@
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage[T1]{fontenc}
+
+\usepackage{transparent}
+\usepackage{fancyhdr}
+\usepackage{siunitx}
+\usepackage{parskip}
+
+\usepackage{mathtools}
+\usepackage{pgfplots}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{calc}
+
+\usepackage{graphicx}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{caption}
+\usepackage{float}
+
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{array}
+
+\usepackage{hyperref}
+
+\input{mdframed.tex}
+
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
