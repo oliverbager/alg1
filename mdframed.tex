@@ -21,6 +21,29 @@
 \vskip 12pt \begin{mdframed}[]\relax}{
 \vskip 12pt\end{mdframed}}
 
+\newcounter{prop}[section]\setcounter{prop}{0}
+\renewcommand{\theprop}{\arabic{section}.\arabic{prop}}
+\newenvironment{prop}[1][]{
+    \refstepcounter{prop}
+      \ifstrempty{#1}
+        {\mdfsetup{
+          frametitle={
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=orange!20]
+            {\strut Proposition~\theprop};}}}
+        {\mdfsetup{
+          frametitle={
+            \tikz[baseline=(current bounding box.east),outer sep=0pt]
+            \node[anchor=east,rectangle,fill=orange!20]
+            {\strut Proposition~\theprop:~#1};}}}
+        \mdfsetup{
+          innertopmargin=2pt,linecolor=orange!20,
+          linewidth=2pt,topline=true,
+          frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+        }
+\vskip 12pt \begin{mdframed}[]\relax}{
+\vskip 12pt\end{mdframed}}
+
 \newcounter{coro}[section]\setcounter{theo}{0}
 \renewcommand{\thecoro}{\arabic{section}.\arabic{coro}}
 \newenvironment{coro}[1][]{
@@ -44,8 +67,6 @@
 \vskip 12pt \begin{mdframed}[]\relax}{
 \vskip 12pt\end{mdframed}}
 
-% \newcounter{prf}[section]\setcounter{prf}{0}
-% \renewcommand{\theprf}{\arabic{section}.\arabic{prf}}
 \newenvironment{prf}[1][]{
   \refstepcounter{prf}
     \ifstrempty{#1}
