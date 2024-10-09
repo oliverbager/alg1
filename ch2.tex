@@ -1,0 +1,234 @@
+\section{Groups}
+\subsection{Definition}
+A composition on a set $G$ is a map $\circ:G\times G\rightarrow G$. The composition $\circ(g,h)$ is often denoted $g\circ h$ or $gh$.
+\begin{defi}[Group]
+    A pair $(G,\circ)$ consisting ofa set $G$ and a composition $\circ:G\times G\rightarrow G$ is called a group if it satisfies:
+    \begin{itemize}
+        \item[(i)] $\forall s_{1},s_{2},s_{3}\in G,s\circ(s_{2}\circ s_{3})=(s\circ s_{2})\circ s_{3}$, the composition is associative.
+        \item[(ii)] For some $e\in G$, $e\circ s=s$ and $s\circ e=s$, there exists a neutral element.
+        \item[(ii)] For every $s\in G$ there exists an inverse element, $t$, such that $t\circ s=e$ and $s\circ t=e$.
+    \end{itemize}
+    A group is called abelian if $x\circ y=y\circ x$ for every $x,y\in G$, whilst the number of elements $|G|\in G$ is called the order of $G$.
+\end{defi}
+An example of a non-abelian group is $(\mathbb{N},+)$.
+\begin{exmp}
+    The neutral element for $(\mathbb{N},+)$ would have to be 0, except a problem then occurs as no inverse element would exist (due to us not having negative numbers), as no solution $\in\mathbb{N}$ would exist for $n+t=0$ where $n,t\in\mathbb{N}$.
+\end{exmp} 
+To exemplify an abelian group we examine $(\mathbb{Z},+)$.
+\begin{exmp}
+    The neutral element for $(\mathbb{Z},+)$ would again have to be 0, but this time we have a well defined inverse element as the equation $n+t=0$ has solution $t=-n$, both of which being contained in $\mathbb{Z}$, additionally it is abelian as $n+t=t+n$.
+\end{exmp} 
+Similarly we can look at larger sets such as the rationals and reals, which are abelian in regards to addition, if we look at multiplication instead, we have to exclude 0 from the groups as 1 would have to be the neutral element by (ii), but then no value $t$ exists such that $0\times t=1$.
+\subsection{Groups and congruences}
+We often times work with $\mathbb{Z}$ instead of $\mathbb{N}$ as we then have an inverse. Given that $\mathbb{Z}$ is a group with composition +, we can build new groups tied to the congruence modulo some integer. We define addition on a subset of $\mathbb{Z}$ given by $a+n\mathbb{Z}=\{a+nx~|~n\in\mathbb{Z}\}$ where $a,n\in\mathbb{Z}$.
+\begin{exmp}
+    Let $G=2+3\mathbb{Z}$ and $H=5+3\mathbb{Z}$, then
+    \begin{align*}
+        G&=\{\ldots,-4,-1,2,5,\ldots\} \\
+        H&=\{\ldots,-1,2,5,8,\ldots\}
+    \end{align*}\vskip -10pt
+\end{exmp}
+We quickly identify that the two sets contain the same elements, and as such we say they are identical.
+\begin{prop}[Identical sets]
+    Let $a,b,c\in\mathbb{Z}$ then: 
+    \begin{itemize}
+        \item[(i)] $a+c\mathbb{Z}=b+c\mathbb{Z}\iff a\equiv b\mod c$.
+        \item[(ii)] $(a+c\mathbb{Z})\cap(b+c\mathbb{Z})=\emptyset\iff a\not\equiv b\mod c$.
+    \end{itemize}
+\end{prop}
+\begin{prf}
+    Let $m\in a+c\mathbb{Z}$, then if $a+c\mathbb{Z}=b+c\mathbb{Z}\implies m\in b+c\mathbb{Z}$. As such for some $x,y\in\mathbb{Z}$ we have $m=a+cx=b+cy\implies a-b=c(y-x)$ meaning that $a\equiv b\mod c$, whereby $a=b+cx\implies a+c\mathbb{Z}=b+cx+c\mathbb{Z}=b+c\mathbb{Z}$ as $x+c\in \mathbb{Z}$, proving (i). Now if $(a+c\mathbb{Z})\cap(b+c\mathbb{Z})\neq\emptyset$ there must exists elements $m,x,y\in\mathbb{Z}$ such that $m=a+cx=b+cy\implies a-b=c(y-x)$ whereby $a\equiv b\mod c$ by (i).
+\end{prf}
+If $c>0$ then $a+c\mathbb{Z}=b+c\mathbb{Z}\iff [a]_{c}=[b]_{c}$. Let $[x]$ be the subset $x+c\mathbb{Z}$, being the set consisting of integers giving remainder $x$ following divison by $c$.
+\begin{exmp}
+    Let $c=3$ then $\mathbb{Z}/3\mathbb{Z}=\{[0],[1],[2]\}$, where
+    \begin{align*}
+        [0]=\{\ldots,-6,-3,0,3,6,\ldots\} \\
+        [1]=\{\ldots,-5,-2,1,4,7,\ldots\} \\
+        [2]=\{\ldots,-4,-1,2,5,8,\ldots\}
+    \end{align*}\vskip -10pt
+\end{exmp}
+Using this we can add subsets $[x],[y]\in\mathbb{Z}/c\mathbb{Z}$ by defining $[x]+[y]=[x+y]$, as we by Proposition 1.3.2(i) have that if $[x]\equiv [x']$ and $[y]\equiv [y']$ then $[x+y]=[x'+y']$, using this we check whether $(\mathbb{Z}/c\mathbb{Z},+)$ forms a group. Since associativity holds for $(\mathbb{Z},+)$, we have that
+\begin{align*}
+    &([x]+[y])+[z]=[x+y]+[z]=[(x+y)+z] \\
+    &\qquad=[x+(y+z)]=[x]+[y+z]=[x]+([y]+[z])
+\end{align*}
+similarly, we have that 0 is the neutral element as
+\[
+    [x]+[0]=[x+0]=[x]
+\]
+whilst there also exists an inverse by $-x$ as
+\[
+    [x]+[-x]=[x-x]=[0]
+.\]
+This group is also abelian as $[x]+[y]=[x+y]=[y+x]=[y]+[x]$. In the case that $c$ is 0 then $\mathbb{Z}/0\mathbb{Z}=\{x+0\mathbb{Z}\}=\{x\}=\mathbb{Z}$, where addition is obviously defined.
+\subsubsection{Composition table}
+\begin{defi}[Composition table]
+    Given a finite group $\{e,g_{1},\ldots,g_{r}\},\cdot)$ the composition is often shown using a composition table:
+
+    \centering{\begin{array}{c|cccccc}
+        $\circ & e & g_{1} & \cdots & g_{j} & \cdots & g_{r} \\
+        \hline
+        e & e & g_{1} & \cdots & g_{j} & \cdots & g_{r} \\
+        g_1 & g_{1} & g_{1}\circ g_{1} & \cdots & g_{1}\circ g_{j} & \cdots & g_{1}\circ g_{r} \\
+        \vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+        g_{i} & g_{i} & g_{i}\circ g_{1} & \cdots & g_{i}\circ g_{j} & \cdots & g_{i}\circ g_{r} \\
+        \vdots & \vdots & \vdots & \ddots & \vdots & \ddots & \vdots \\
+        g_{r} & g_{r} & g_{r}\circ g_{1} & \cdots & g_{r}\circ g_{j} & \cdots & g_{r}\circ g_{r}$
+     \end{array}}
+\end{defi}
+\begin{exmp}
+  The composition table for the previously computed group ($\mathbb{Z}/3\mathbb{Z},+)$ is given by
+  \begin{center}
+  \begin{array}{c|ccc}
+          $+ & [0] & [1] & [2] \\
+          \hline
+          [0] & [0] & [1] & [2] \\
+          \[[1] & [1] & [2] & [0] \\
+          \[[2] & [2] & [0] & [1]$
+  \end{array}
+  \end{center}
+\end{exmp}
+\subsection{Associativity}
+Suppose that $S$ is a set with a multiplicative group mapping $(x,y)\rightarrow xy$. As it is a group, associativity holds, an expression like $s_{1}s_{2}\ldots s_{n}$ for $n>2$ isnt valid for this composition, as it only takes in two element, however we can reduce the expression to contain only two elements by repeatedly multiplying sets of two elements.
+\begin{exmp}
+  Consider the sequence $s_{1}s_{2}s_{3}s_{4}$ in the previous composition, we can calculate this in 5 different ways
+  \begin{align*}
+    &s_{1}(s_{2}(s_{3}s_{4})) \\
+    &s_{1}((s_{2}s_{3})s_{4}) \\
+    &(s_{1}(s_{2}s_{3}))s_{4} \\
+    &((s_{1}s_{2})s_{3})s_{4} \\
+    &(s_{1}s_{2})(s_{3}s_{4})
+  \end{align*}
+\end{exmp}
+Determining whether at set is associative is difficult, except for one case: when $S$ is the set of maps from a set $X$ to itself where composition is defined as usual, meaning that $fg$ is $(fg)(x)=f(g(x))$ for $f,g\in S$ and $x\in X$. In which case $f(gh)=(fg)h$ since $(f(fg))(x)=((fg)h)(x)$ for all $x\in X$:
+\begin{align*}
+    (f(gh))(x)&=f((gh)(x))=f(g(h(x))) \\
+    (f(g)h)(x)&=(fg)(h(x))=f(g(h(x)))
+\end{align*}
+\subsection{Example of non-abelian group}
+\begin{exmp}
+    Let $X=\{1,2,3\}$ and $G$ be the set of all bijective maps $X\rightarrow X$, then $G$ is a group with the usual composition of maps as composition. Here the neutral element of $G$ will be the identity map $X\rightarrow X$, the inverse of some map $f:X\rightarrow X$ is the inverse map $f^{-1}:X\rightarrow X$, and the composition of maps is associative, we can list the elements of $G$ as
+    \begin{align*}
+        e&=\begin{pmatrix}1 & 2 & 3 \\ 1 & 2 & 3\end{pmatrix}\hskip 16pt a=\begin{pmatrix}1 & 2 & 3 \\ 2 & 1 & 3\end{pmatrix}\hskip 16pt b=\begin{pmatrix}1 & 2 & 2 \\ 1 & 3 & 2\end{pmatrix} \\
+        c&=\begin{pmatrix}1 & 2 & 3 \\ 3 & 2 & 1\end{pmatrix}\hskip 16pt d=\begin{pmatrix}1 & 2 & 3 \\ 3 & 1 & 2\end{pmatrix}\hskip 16pt f=\begin{pmatrix}1 & 2 & 3 \\ 2 & 3 & 1\end{pmatrix}
+    \end{align*}
+    where for example $c:X\rightarrow X$ is the map given by $c(1)=3,c(2)=2,c(3)=1$. Compositions are simple to find, as we can apply associativity, finding for example that $ab(x)=a(b(x))$ implying that $a(b(1))=a(1)=2,a(b(2))=a(3)=3,a(b(3))=a(2)=1$, also showing that $ab=f$. The composition table is given by
+    \begin{center}
+    \begin{array}{c|cccccc}
+        $\circ & e & a & b & c & d & f \\ 
+        \hline
+        e & e & a & b & c & d & f \\ 
+        a & a & e & f & d & c & b \\
+        b & b & d & e & f & a & c \\
+        c & c & f & d & e & b & a \\
+        d & d & b & c & a & f & e \\
+        f & f & c & a & b & e & d$
+    \end{array}
+    \end{center}
+    This group is known as the symmetric group $S_{3}$ and is non-abelian, as $ab\neq ba$.
+\end{exmp}
+\subsection{Uniqueness of neutral and inverse}
+Suppose that $e,e'\in G$ are neutral elements of $G$, then $e=e'e=e'$, and as such $e'=e$. Similarly to every $g\in G$ there can only be one inverse element $g^{-1}$, let $g^{-1}'$ be a second inverse element satisfying $g^{-1}'g=e$, then $g^{-1}'g=e=g^{-1}g$, then by multiplying both sides by $g^{-1}'$ we have that $g^{-1}'=(g^{-1}g)g^{-1}'=g^{-1}(gg^{-1})=g^{-1}$.
+\begin{defi}[Inverse element]
+    Let $g\in G$ be an element of a group, then we let $g^{-1}\in G$ denote the unique inverse element of $g$.
+\end{defi}
+\subsection{Multiplication by $g\in G$ is bijective}
+Let $G$ be a group and $g\in G$, then a map $\varphi:G\rightarrow G$ given by $\varphi(x)=gx$ is bijective, we prove this by providing the inverse map $\lambda:G\rightarrow G$ given by $\lambda(x)=g^{-1}x$. Then $\lambda(\varphi(x))=g^{-1}(gx)=(g^{-1}g)x=ex=x$. proving that $\lambda=\varphi^{-1}$, as the inverse exists, $\varphi$ must be bijective.
+\subsection{Subgroups and cosets}
+\begin{defi}[Subgroup]
+    A subgroup of a group $G$ is a non-empty subset $H\subseteq G$ such that the composition of $G$ makes $H$ into a group, i.e., $H$ is a subgroup of $G$ if and only if:
+    \begin{itemize}
+        \item[(i)] $e\in H$.
+        \item[(ii)] $x^{-1}\in H$ for all $x\in H$.
+        \item[(iii)] $xy\in H$ for all $x,y\in H$.
+    \end{itemize}
+\end{defi}
+\begin{exmp}
+    Observe group $S_{3}$ from Example 2.4.1, here $\{e,a\}$ and $\{e,f,d\}$ are subgroups of $S_{3}$ by the composition table.
+    \begin{center}
+    \begin{array}{c|cccccc}
+        $\circ & e & d & f \\ 
+        \hline
+        e & e & d & f \\ 
+        d & d & f & e \\
+        f & f & e & d$
+    \end{array}\hskip 32pt
+    \begin{array}{c|cccccc}
+        $\circ & e & a \\ 
+        \hline
+        e & e & a \\ 
+        a & a & e$ \\
+    \end{array}
+    \end{center}
+\end{exmp} 
+We recall from previous chapters that $(\mathbb{Z},+)$ forms a group, in the context of groups the uniqueness of the remainder following divison results in
+\begin{prop}[Subgroups of $\mathbb{Z}$]
+    Let $H$ be a subgroup of $(\mathbb{Z},+)$ then:
+    \[
+        H=d\mathbb{Z}=\{dn~|~n\in \mathbb{Z}\}=\{\ldots -2d,-d,0,d,2d,\ldots\}
+    \]
+    for a unique $d\in\mathbb{N}$.
+\end{prop}
+\begin{prf}
+    If $d=0\implies H=\{0\}$ Assume $H\neq\{0\}$, then $N\cap H$ contains a smallest natural number $d>0$ as the first positive non-zero entry is always $d$ given that $d\neq 0$. Let $H=d\mathbb{Z}$, then $-d\in H$ by definition as $d\in H$, $H$ being a subgroup. Similarly, the set must be closed under addition, and as such $d+d,d+d+d,d+d+d+d,\ldots\in H$ (and the same for negative $d$), showing that all $nd\in H$ for $n\in\mathbb{Z}$, whereby $d\mathbb{Z}\subseteq H$. Suppose now that $m\in H$, division with remainder gives that $m=qd+r$ where $0\leq r<d$. Since $H$ is a subgroup, $m,d,-qd,r\in H$, but as $d>r\in\mathbb{N}\geq 0$, $r$ can only be 0 whereby $m=qd\implies H=d\mathbb{Z}$.
+\end{prf}
+Let $H$ be a subgroup of $G$ and $g\in G$, then the subsets
+\[
+    gH=\{gh~|~h\in H\}\subseteq G\hskip 32pt Hg=\{hg~|~h\in H\}\subseteq G
+\]
+Are called the left- and right cosets respectively. The set of left cosets of $H$ is denoted $G/H$ whilst the set of right cosets of $H$ is denoted $H\setminus G$.
+\begin{exmp}
+    Let $G=(\mathbb{Z},+),H=3\mathbb{Z}$, then
+    \[
+        \mathbb{Z}/3\mathbb{Z}=\{3\mathbb{Z},1+3\mathbb{Z},2+3\mathbb{Z}\}
+    \]
+    As we are working modulo 3 the sets $1+3\mathbb{Z}=4+3\mathbb{Z}=1+3n+3\mathbb{Z}$ for $n\in\mathbb{Z}$, as such two subgroups of $H$ of $G$, $g_{1}H=g_{2}H$ does not necessarily imply that $g_{1}=g_{2}$.
+\end{exmp}
+\begin{exmp}
+    Let $H=\{e,a\}\suset S_{3}$, then all left- and right cosets of $H$ can be listed using the composition table as
+    \begin{align*}
+        eH=\{ee,ea\}&=\{e,a\}\hskip 32pt He=\{ee,ae\}=\{e,a\} \\
+        aH=\{ae,aa\}&=\{a,e\}\hskip 32pt Ha=\{ea,aa\}=\{a,e\} \\
+        bH=\{be,ba\}&=\{b,d\}\hskip 32pt Hb=\{eb,ab\}=\{b,f\} \\
+        cH=\{ce,ca\}&=\{c,f\}\hskip 32pt Hc=\{ec,ac\}=\{c,d\} \\
+        dH=\{de,da\}&=\{d,b\}\hskip 32pt Hd=\{ed,ad\}=\{d,c\} \\
+        fH=\{fe,fa\}&=\{f,c\}\hskip 32pt Hf=\{ef,af\}=\{f,b\}
+    \end{align*}
+    We quickly recognize that these are either equal or disjoint, for the right cosets we have $H=eH=aH,bH=dH,cH=fH$ whilst for the left cosets $H=He=Ha,Hb=Hd,Hc=Hf$, meaning that we can write the sets of cosets as $G/H=\{H,bH,cH\}$ and $G\setminus H=\{H,Hb,Hc\}$.
+\end{exmp}
+\pagebreak\begin{lemm}
+  Let $H$ be a subgroup of a group $G$ and let $x,y\in G$, then:
+  \begin{itemize}
+      \item[(i)] $x\in xH$.
+      \item[(ii)] $xH=yH\iff x^{-1}y\in H$.
+      \item[(iii)] If $xH\neq uH$ then $xH\cap yH=\emptyset$.
+      \item[(iv)] The map $\varphi:H\rightarrow xH$ given by $\varphi(h)=xh$ is bijective.
+  \end{itemize}
+\end{lemm}
+\begin{prf}
+    $x$ is obviously contained in $xH$ as $x=xe$, proving (i). If $xH=yH$ then there exists an $h\in H$ such that $xh=ye=y$, making $y=xh$ and thereby $yH\subseteq xH$, similarly, by the previous equality it follows that $x=yh^{-1}$ whereby we also have $xH\subseteq xH$, which is satisfied if and only if $xH=yH$, proving (ii). Now let $z\in xH\cap yH$, then $z=xh_{1}=yh_{2}$, for some $h_{1},h_{2}\in H$, then there must exist $h_{1}$ such that $xh_{1}=yh_{2}\implies x^{-1}y\in H$, which by (ii) shows that $xH=xY$, whereby (iii) holds. We let $\lambda(h)=x^{-1}h$, whereby $\lambda(\varphi(h))=x^{-1}xh=(x^{-1}x)h=eh=h$, proving that the inverse exists whereby it must be bijective.
+\end{prf}
+\begin{coro}
+    Let $H$ be a subgroup of $G$, then
+    \[
+        G=\bigcup_{g\in G}gH
+    \]
+    and if $g_{1}H\neq g_{2}H$, then $g_{1}H\cap g_{2}H=\emptyset$.
+\end{coro}
+\begin{prf}
+    By the proposition we have that $g_{1}H\neq g_{2}H$, as such by Lemma 2.7.1(iii) their intersection is the empty set.
+\end{prf}
+\begin{theo}[Lagrange]
+    If $H\subseteq G$ is a subgroup of a fionite group $G$, then
+    \[
+        |G|=|G/H||H|
+    \]
+    Meaning that the order of a subgroup divides the order of the group.
+\end{theo}
+\begin{prf}
+    Let $gH$ be a coset in $G/H$, by Lemma 2.7.1(iv) the map $\varphi:G\rightarrow gH$ is bijective, and as such $|H|=|gH|$. Now as $G=\bigcup_{i\in G} g_{i}H$, the order of $|G|$ must be the order of $|H|$ multiplied by the amount of cosets, whereby $G=|G/H||H|$ implying that $|H|$ divides $|G|$.
+\end{prf}
+\begin{defi}[Index]
+    The number of cosets $|G/H|$ is called the index of $H\in G$, denoted $[G:H]$.
+\end{defi}

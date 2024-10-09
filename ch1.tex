@@ -1,13 +1,13 @@
 \section{Numbers}
 \subsection{Natural numbers and integers}
-In order to constract abstract algebra, we define the natural numbers, $\mathbb{N}$, and the integers, $\mathbb{Z}$, where
+In order to construct our number system, we define the natural numbers, $\mathbb{N}$, and the integers, $\mathbb{Z}$, where
 \begin{align*}
     \mathbb{N}&=\{0,1,2,3,4,5,\ldots\} \\
     \mathbb{Z}&=\{\ldots,-2,-1,0,1,2,\ldots\}
 \end{align*}
-Making $\mathbb{N}$ a subset of $\mathbb{Z}$, $\mathbb{N}\subset\mathbb{Z}$. In order to construct these as ordered sets, we define the greater than- or equal and  greater than operator, let $X,Y\in\mathbb{Z}$ then we define
+implying that $\mathbb{N}\subset\mathbb{Z}$. In order to construct these as ordered sets, we define the greater than- or equal and  greater than operator, let $X,Y\in\mathbb{Z}$ then we define
 \[
-    X\leq Y\iff X-Y\in\mathbb{N}\hskip 16pt \text{and}\hskip 16pt X<Y\iff X\neq Y\vee X\leq Y
+    X\leq Y\iff X-Y\in\mathbb{N}\hskip 16pt \text{and}\hskip 16pt X<Y\iff X\neq Y\text{ and } X\leq Y
 \]
 Giving us the usual number ordering
 \[
@@ -20,7 +20,7 @@ Giving us the usual number ordering
     Suppose that $S=\{1,2,3,4,\ldots\}$, then $\forall x\in S,1\leq x$, making $1$ the first element of the set.
 \end{exmp}
 It is immediately obvious that every nonempty subset of $\mathbb{N}$ must have a first element (due to it having a concrete lower bound), we call this property being well-ordered.
-\pagebreak\subsection{Modular arithmetic}
+\subsection{Modular arithmetic}
 Imagine that every multiple of 3 is marked on the axis of integers
 \begin{figure}[!h]
     \centering
@@ -64,7 +64,7 @@ We call the amount you walk to the right the remainder following division by 3.
 \begin{defi}[Remainder]
     If $x,d\in\mathbb{Z}$ where $d>0$ we let $[x]_{d}$ be the unique remainder from Theorem 1.1.
 \end{defi}
-\pagebreak\subsection{Congruences}
+\subsection{Congruences}
 \begin{defi}[Congruence]
     Let $a,b,c\in\mathbb{Z}$ then $a,b$ are called congruent modulo $c$ if $c\mid b-a$, denoted $a\equiv b\mod c$, which can be simply stated as them having the same remainder when divided by $c$.
 \end{defi}
@@ -91,10 +91,10 @@ We call the amount you walk to the right the remainder following division by 3.
 \begin{exmp}
   The integers 29 and 14 can be written as $29=5\times 5+4$ and $14=5\times 2+4$, as they both have the same remainder
   \[
-      [29]_{5}=[24]_{5}=4\iff 24\equiv 14\mod 5
+      [29]_{5}=[14]_{5}=4\iff 29\equiv 14\mod 5
   \]
 \end{exmp}
-\pagebreak\begin{prop}[Congruence of sum and product]
+\begin{prop}[Congruence of sum and product]
     Suppose that $x_{1}\equiv x_{2}\mod d$ and $y_{1}\equiv y_{2}\mod d$ then:
     \begin{itemize}
         \item[(i)] $x_{1}+y_{1}\equiv x_{2}+y_{2}\mod d$
@@ -127,10 +127,10 @@ We call the amount you walk to the right the remainder following division by 3.
     \end{align*}
     Which lets us compute the remainder as
     \[
-        \left[12^{11}\right]=\left[18\times 18\times 12\right]=3
+        \left[12^{11}\right]=\left[[18\times 18]\times 12\right]=[9\times 12]=3
     \]
 \end{exmp}
-\pagebreak\subsection{Greatest common divisor}
+\subsection{Greatest common divisor}
 \begin{defi}[Divisor set]
     Let $D=\{d\in\mathbb{N}~|~d\mid n\}$ be the set of natural divisors of $n\in\mathbb{Z}$, we call $D$ the divisor set of $n$ and denote it $\text{div}(n)$.
 \end{defi}
@@ -170,8 +170,7 @@ Indicating that the intersection of divisor sets for some $m,n\in\mathbb{Z}$ for
 \begin{defi}[Greatest common divisor]
     The unique number $d\in\mathbb{N}$ discussed above is called the greatest common divisor of $m,n$ denoted $d=\text{gcd}(m,n)$.
 \end{defi}
-\pagebreak\subsection{Euclidean algorithm}
-% Lemma 1.4.1 indicates that an algorithm to compute the greatest common divisor exists, which is of course the case.
+\subsection{Euclidean algorithm}
 \begin{prop}[Euclid's algorithm]
     Let $m,n\in\mathbb{N}$, then:
     \begin{itemize}
@@ -196,15 +195,15 @@ For a more general case with $m\leq n\leq 0$, we let $r_{-1}=m$ and $r_{0}=n$, i
 
 Since $m,n$ share a common factor, it must be possible to construct a linear combination of $m,n$ resulting in said factor.
 \begin{exmp}
-    We wish to determine $\lambda,\mu\in\mathbb{Z}$ such that $\lambda\times 24+\mu\times 14=2$, we do this by determining $\lambda,\mu$ for the remainder in each step of the algorithm
+    We wish to determine $\lambda,\mu\in\mathbb{Z}$ such that $24\lambda+14\mu=2$, we do this by determining $\lambda,\mu$ for the remainder in each step of the algorithm
     \begin{align*}
         24&=1\times 24+0\times 14 \\
         14&=0\times 24+1\times 14 \\
         10&=24-14=1\times 24-1\times 14 \\
         4&=14-10=-1\times 24+2\times 14 \\
-        2&=10-2\times 4=24-14=2\times 24-3\times 14
+        2&=10-2\times 4=2\times 24-3\times 14
     \end{align*}
-    Whereby $2\times 24-3\times 14=\text{gcd}(n,m)$.
+    Giving us that $\lambda=2,\mu=-3$.
 \end{exmp}
 \begin{defi}[Extended Euclidean algorithm]
     The Euclidean algorithm with the addition demonstrated above for computing $\lambda,\mu$ is called the extended Euclidean algorithm.
@@ -252,7 +251,7 @@ Since $m,n$ share a common factor, it must be possible to construct a linear com
     \]
     Showing that $\text{gcd}(a,bc)=1$ whereby they are relative primes.
 \end{prf}
-\pagebreak\subsection{Chinese remainder theorem}
+\subsection{Chinese remainder theorem}
 \begin{exmp}
  Consider a number $x<30$, let $a,b,c$ be rows numbered upwards from zero in the following three tables where the number is located
 \\\\\begin{centering}\begin{tabular}{|ccccccccccccccc|}
@@ -342,7 +341,7 @@ Take for example $x=27$, then we find $a=1,b=0,c=2$, in fact, these numbers are 
     \[
         X=a_{1}A_{1}+a_{2}A_{2}+\cdots+a_{t}A_{t}
     \]
-    Where we can ignore the first term it is equal 1 when the other term is equal 0 and vice versa, whereby the equation.
+    Where we can ignore the first term as it is equal 1 when the other term is equal 0 and vice versa.
 \end{prf}
 \begin{exmp}
     Applying the above on the 30-riddle we have that $n_{1}=2,n_{2}=3,n_{3}=5$, we find $\lambda_{i},mu_{i}\in\mathbb{Z}$ that satisfy
@@ -361,5 +360,5 @@ Take for example $x=27$, then we find $a=1,b=0,c=2$, in fact, these numbers are 
         X&\equiv a_{2}\mod 3
         X&\equiv a_{3}\mod 5
     \end{align*}
-    And as such we can determine our original number using $a_{1},a_{2},a_{3}$, for $a_{1}=1,a_{2}=0,a_{3}=2$ we find that $X=15+0+12=27$, and determine the remainder following division by 30 $[X]_{30}=[27]_{30}=27$, which is also the number we used in the first example.
+    And as such we can determine our original number using $a_{1},a_{2},a_{3}$, for $a_{1}=1,a_{2}=0,a_{3}=2$ we find that $X=15+0+12=27$, and determine the remainder following division by 30 as $[X]_{30}=[27]_{30}=27$, which is also the number we used in the first example.
 \end{exmp}

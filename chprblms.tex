@@ -1,11 +1,215 @@
 \section{Exercises}
-\subsection{Chapter 1}
+\subsection{Chapter 1 FIX 13}
+\paragraph{Exercise 1}
+Let $s$ be the first element of $S\subseteq Z$, assume that $s_{1}$ also be the first element of $S$, then if follows that $\forall x\in S,s\leq s_{1}\leq x$, however as $x$ is all elements in $S$, it must also be able to take on the values $s,s_{1}$, giving us the inequalities $s\leq s_{1}\leq s_{1}$ and $s\leq s_{1}\leq s$, which is only satisfied if $s=s_{1}$ and as such it must be unique.
 \paragraph{Exercise 2}
+We recall that $x=qd+r\implies r=x-qd$, as such $x-qd$ is the remainder following division of $x$ by $d$, meaning that $0\leq r<d$, and as $d>0$, the set of possible remainders must always contain at least $\{0\}$, meaning that $M\cap\mathbb{N}\neq\emptyset$.
 \paragraph{Exercise 3}
+From Proposition 1.3.1(i) we have that
+\begin{align*}
+    a&\equiv [a]\mod N \\
+    b&\equiv[b]\mod N
+\end{align*}
+Then by Proposition 1.3.2(ii) we can write the remainder of their product as
+\[
+    ab\equiv[a][b]\mod N
+\]
+Whereby we from Proposition 1.3.1(ii) have that
+\[
+    [ab]=[[a][b]]
+\]
 \paragraph{Exercise 4}
+We split $2^{340}$ into smaller exponents as
+\[
+    2^{8}+2^{6}+2^{4}+2^{2}\implies2^{340}=2^{2^{8}}2^{2^{6}}2^{2^{4}}2^{2^{2}}
+\]
+from which it follows that $\left[2^{340}\right]=\left[\left[2^{2^{8}}\right]\left[2^{2^{6}}\right]\left[2^{2^{4}}\right]\left[2^{2^{2}}\right]\right]$. Whereby we can compute the remainders of the smaller terms with respect to $N=341$:
+\begin{align*}
+    \left[2\right]&=2 \\
+    \left[2^{2}\right]=[2\times 2]&=4 \\
+    \left[2^{2^{2}}\right]=\left[\left(2^{2}\right)^{2}\right]=\left[4\times 4\right]=\left[16\right]&=16 \\
+    \left[2^{2^{3}}\right]=\left[\left(2^{2^{2}}\right)^{2}\right]=\left[16\times 16\right]=\left[256\right]&=256 \\
+    \left[2^{2^{4}}\right]=\left[\left(2^{2^{3}}\right)^{2}\right]=\left[256\times 256\right]&=64 \\
+    \left[2^{2^{5}}\right]=\left[\left(2^{2^{4}}\right)^{2}\right]=\left[64\times 64\right]&=4 \\
+    \left[2^{2^{6}}\right]=\left[\left(2^{2^{5}}\right)^{2}\right]=\left[4\times 4\right]&=16 \\
+    \left[2^{2^{7}}\right]=\left[\left(2^{2^{6}}\right)^{2}\right]=\left[16\times 16\right]&=256 \\
+    \left[2^{2^{8}}\right]=\left[\left(2^{2^{7}}\right)^{2}\right]=\left[256\times 256\right]&=64
+\end{align*}
+Allowing us to compute the remainder as
+\[
+    \left[2^{340}\right]=\left[\left[64^{2}\times 16^{2}]\right]=\left[\left[64\times64\right]\left[16\times16\right]\right]=\left[4\times 256\right]=\left[1024\right]=1
+\]
 \paragraph{Exercise 6}
+i) 2 divides every term except $10^{0}a_{0}$ as $\forall n\in\mathbb{N}\setminus\{0\},\text{div}(10^{n})\supseteq\{2,5,10\}$, as such $a\equiv a_0\mod 2$, whereby 2 must divide $a_{0}$ for the expression to be divisible by 2.
+
+ii) We have $\forall n\in\mathbb{N}\setminus\{0,1\},\text{div}(10^{n})\supseteq\{2,4,\ldots,100\}$, as such $a\equiv a_{0}+10^{1}a_{1}\mod 4\equiv a_{0}+2a_{1}\mod 4$, whereby $4\mid a_{0}+2a_{1}$ for $a$ to be divisible by 4.
+
+iii) We have $\forall n\in\mathbb{N}\setminus\{0,1,2\},\text{div}(10^{n})\supseteq\{2,4,8,\ldots,1000\}$, as such $a\equiv a_{0}+10^{1}a_{1}+10^{2}a_{2}\mod 4\equiv a_{0}+2a_{1}+4a_{2}\mod 4$, whereby $4\mid a_{0}+2a_{1}+4a_{2}$ for $a$ to be divisible by 4.
+
+
+iv) We have that $\forall n\in\mathbb{N}\setminus\{0\},\text{div}(10^{n})\supseteq\{2,5,10\}$, as such $a\equiv a_{0}\mod 5$ implying that $5\mid a_{0}$ for $a$ to be divisible by 5.
+
+v) We first show that 9 and 10 are relatively prime using Euclids algorithm $\text{gcd}(10,9)=\text{gcd}(9,1)=\text{gcd}(1,0)=1$, as such 9 never divides any factor of 10, and as such must divide all $a_{n}\in a$ for the expression to be divisible.
+
+vi)
+
+vii)
+
 \paragraph{Exercise 8}
+By Proposition 1.3.2(ii) we can express $[4^{n}]_{3}$ as $[[4]_{3}^{n}]_{3}$, this simplifies immediately as $[4]_{3}=1$ whereby $\forall n\in\mathbb{N},[[4]_{3}^{n}]_{3}=[1]_{3}=1$. By Proposition 1.3.1(i) we can then express the remainder of the difference $4^{n}-1$ as $[4^{n}]_{3}-[1]_{3}=1-1=0$, whereby $4\mid 4^{n}-1$.
 \paragraph{Exercise 12}
+We use the extended Euclidean algorithm with $m=89$ and $n=55$, as such we write the system of equations
+\begin{align*}
+    89&=89 \\
+    55&=55 \\
+    34&=89-55=89\times 1-55\times 1 \\
+    21&=55-34=89\times(-1)+55\times 2 \\
+    13&=34-21=2\times 89-55\times 3 \\
+    8&=21-13=89\times(-3)+55\times 5 \\
+    5&=13-8=89\times 5-55\times 8 \\
+    3&=8-5=89\times(-8)+55\times 13 \\
+    2&=5-3=89\times 13+55\times(-21) \\
+    1&=3-2=89\times(-21)+55\times34 
+\end{align*}
+whereby $\lambda=-21,\mu=34$. By Chinese remainder theorem we let $X=34\times 7=238$, and take the remainder following division by 55 as $[238]_{55}=18$, as such $x=18n$ for any $n\in\mathbb{Z}$.
 \paragraph{Exercise 13}
+Suppose that $\lambda N+\mu M=d$, then we can let $d=0$ and solve, finding that $\lambda_{1}N+\mu_{1}M=0\implies\lambda_{1}=\frac{-\mu_{1}M}{N}$, then when $\mu_{1}$ is a nonzero multiple of $N$, it cancels out the denominator, and we get a corresponding integer value for $\lambda_{1}$, since the sum of these equal 0, we can add any factor thereof with no repercussions to the equality, and find that $\lambda N+\mu M+n(\lambda_{1}N+\mu_{1}M)=\underbrace{(\lambda+n\lambda_{1})}_{\lambda'}N+\underbrace{(\mu+n\mu_{1})}_{\mu'}M=d$.
 \paragraph{Exercise 17}
+We solve the system of congruences
+\begin{align*}
+    X&\equiv 2\mod 3 \\
+    X&\equiv 3\mod 5
+\end{align*}
+for $X$. As $\text{gcd}(3,5)=1$ we make use of Chinese remainder theorem with $N=3\times 5=15$, and establish the system of equations
+\begin{align*}
+    \lambda_{1}\times 3+\mu_{1}\times 5&=1\implies\lambda_{1}=7,\mu_{1}=-4\implies A_{1}=-20 \\
+    \lambda_{2}\times 5+\mu_{2}\times3&=1\implies\lambda_{2}=5,\mu_{2}=-8\implies A_{2}=-24
+\end{align*}
+giving us that $X=-40-72=-112$, we take modulo 15 finding that $X\equiv-112\mod 15\equiv 8\mod 15$, as 8 is not odd, we add 15, giving us that $X=23$ is the smallest odd natural number solution to the system of congruences.
 \paragraph{Exercise 18}
+We show that $\text{gcd}(504,35,16)=1$. We first find $\text{gcd}(504,35)$ and then $\text{gcd}(\text{gcd}(504,35),16)$ as this will give us the shared greatest factor
+\begin{align*}
+  \text{gcd}(504,35)=\text{gcd}(35,28)=\text{gcd}(28,7)=\text{gcd}(7,0)=7 \\
+  \text{gcd}(16,7)=\text{gcd}(7,2)=\text{gcd}(2,1)=\text{gcd}(1,0)=1
+\end{align*}
+showing that they are relatively prime and apply Chinese remainder theorem with $N=504\times 35\times 16=282240$, we write the system of equations
+\begin{align*}
+    \lambda_{1}\times 504+\mu_{1}\times 560&=1 \\
+    \lambda_{2}\times 35+\mu_{2}\times 8064&=1 \\
+    \lambda_{3}\times 16+\mu_{3}\times 17640&=1 \\
+\end{align*}
+\pagebreak\section{Chapter 2}
+\subsection{Chapter 1}
+\paragraph{Exercise 1} Decide which of the following are groups. List the conditions that are not met in cases where the set is not a group.
+
+\textbf{a) $\textbf{(2\mathbb{Z},+)}$, the even set of integers with addition.}
+
+The set is given by $2\mathbb{Z}=\{\ldots,-4,-2,0,2,4,\ldots\}$, associativity holds for integer addition, as we are observing addition in the integers the neutral element is $0$ as $n+0=n$, and an inverse always exists as $x,-x\in2\mathbb{Z}$. The set is therefore a group.
+
+\textbf{b) $\mathbf{([-5,5],+)}$ the set of real numbers between $-5,5$ with addition.}
+
+The set is not closed as for $a,b\in [-5,5]$ the sum $a+b$ is not always in $[-5,5]$. Associativity holds for integer addition, similarly the neutral element is $0$ as $n+0=n$, and an inverse for every element exists as for $x\in[-5,5]$ the element $-x\in[-5,5]$ is an inverse, as the set is not closed, it is not a group.
+
+\textbf{c) $\mathbf{(\mathbb{Z},\textasciicircum)}$, where the composition is given by $\mathbf{a\textasciicircum b=a^{b}}$ for $\mathbf{a,b\in\mathbb{N}}$.}
+
+Associativity does not hold for exponentiation as $a\textasciicircum b\neq b\textasciicircum a$, a neutral element exists as 1, as $a\textasciicircum 1=a$, but the inverse does not exist as it would for some cases be a fraction not contained in $\mathbb{Z}$, therefore the set does not constitute a group.
+
+\textbf{d) $\mathbf{(\{e\},\cdot)}$, where $\mathbf{e\times e=e}$.}
+
+Associativity holds for integer multiplication, similarly we have a neutral element by $e$, and it is also its own inverse as $e\times e=e$, as such the set forms a group.
+
+\textbf{e) $\mathbf{\emptyset}$, the empty set with trivial composition.}
+
+Since no elements exist in $\emptyset$ it is impossible for it to be associative as there is nothing to be associative over, similarly a neutral element cannot exist as no elements exist and an inverse lacks for the aforementioned reason.
+
+\end{itemize}
+\paragraph{Exercise 2} Write the composition table for $\mathbb{Z}/5\mathbb{Z}$.
+\begin{center}
+    \begin{array}{c|ccccc}
+        $+ & [0] & [1] & [2] & [3] & [4] \\ 
+        \hline
+        [0] & [0] & [1] & [2] & [3] & [4] \\
+        \[[1] & [1] & [2] & [3] & [4] & [0] \\
+        \[[2] & [2] & [3] & [4] & [0] & [1] \\
+        \[[3] & [3] & [4] & [0] & [1] & [2] \\
+        \[[4] & [4] & [0] & [1] & [2] & [3]$
+  \end{array}
+\end{center}
+\paragraph{Exercise 3} We have seen that $\text{GL}_{2}(\mathbb{R})$ is non-abelian, use this to show that $\text{GL}_{n}(\mathbb{R})$ is non-abelian for $n\geq 2$.
+
+We first show that $\text{GL}_{n}(\mathbb{R})$ for $n\geq 2$ forms a group, we know matrix multiplication is associative, similarly the neutral element exists as the identity matrix $I_{n}$, whilst the inverse exists due to the determinant being nonzero by definition, making it satisfy the conditions for a group. 
+
+We now show that it is not abelian by counterexample in $n=2$:
+\begin{align*}
+    AB&=\begin{bmatrix}1 & 1 \\ 0 & 1\end{bmatrix}\begin{bmatrix}1 & 0 \\ 1 & 1\end{bmatrix}=\begin{bmatrix}2 & 1 \\ 1 & 1\end{bmatrix} \\
+    BA&=\begin{bmatrix}1 & 0 \\ 1 & 1\end{bmatrix}\begin{bmatrix}1 & 1 \\ 0 & 1\end{bmatrix}=\begin{bmatrix}1 & 1 \\ 1 & 2\end{bmatrix}
+\end{align*}
+whereby $\text{GL}_{n}(\mathbb{R})$ for $n\geq 2$ is non-abelian.
+\paragraph{Exercise 4} Let $G$ be a group and $g\in G$ be a definite element, show that the mapping $\varphi:G\rightarrow G$ given by $\varphi(x)=xg$ is bijective.
+
+Since $\varphi\in G$ there must exist an inverse $\varphi^{-1}$ such that $\varphi^{-1}(\varphi(x))=x$, we let $\varphi^{-1}(x)=xg^{-1}$, then $\varphi^{-1}(\varphi(x))=xgg^{-1}=xe=x$, whereby the function must be bijective as it has an inverse.
+
+\paragraph{Exercise 5} Find all possible composition tables for groups with four elements.
+\begin{center}
+    \begin{array}{c|cccc}
+        $\circ & e & a & b & c \\
+        \hline
+        e & e & a & b & c \\
+        a & a & e & c & b \\
+        b & b & c & a & e \\
+        c & c & b & e & a$
+  \end{array}\hskip 32pt
+    \begin{array}{c|cccc}
+        $\circ & e & a & b & c \\
+        \hline
+        e & e & a & b & c \\
+        a & a & b & c & e \\
+        b & b & c & e & a \\
+        c & c & e & a & b $
+  \end{array}\hskip 32pt
+    \begin{array}{c|cccc}
+        $\circ & e & a & b & c \\
+        \hline
+        e & e & a & b & c \\
+        a & a & c & e & b \\
+        b & b & e & c & a \\
+        c & c & b & a & e$
+  \end{array}
+\end{center}
+
+\paragraph{Exercise 6} Use the same procedure as in Section 2.1.6, use the result to determine whether an abelian group of order 4 exists.
+
+For the group to be abelian the entries on the diagonal of the composition table (from bottom left to top right) must be the same, this holds for the 4th order composition table given by
+\begin{center}
+    \begin{array}{c|cccc}
+        $\circ & e & a & b & c \\
+        \hline
+        e & e & a & b & c \\
+        a & a & b & c & e \\
+        b & b & c & e & a \\
+        c & c & e & a & b $
+  \end{array}
+\end{center}
+\paragraph{Exercise 7} Check that the composition table in Example 2.1.6 is correct.
+
+Since the composition table contains no rows or columns with the same entry twice, it is correct, similarly we recognize that the diagonal entries are not equivalent, being consistent with $G$ not being abelian.
+\pagebreak\subsection{Section 2}
+\paragraph{Exercise 1} Let $(G,\circ)$ be a group, $H\subset G$, and assume that the restriction of $\circ$ to $H\times H$ makes $H$ a group (i.e. $H$ is a subgroup by definition). Show using definition only that:
+
+\textbf{a) If $\mathbf{e_{G}}$, $\mathbf{e_{H}}$ are neutral elements of $\mathbf{G,H}$ respectively, then $\mathbf{e_{H}=e_{G}}$.}
+
+
+
+\textbf{b) If $\mathbf{A\in H}$ has inverse $\mathbf{b_{H}\in H}$ with inverse $\mathbf{b_{G}\in G}$, then $\mathbf{b_{H}=b_{G}}$.}
+
+\paragraph{Exercise 2} Let $\text{SL}_{2}(\mathbb{Z})$ be the set of $2\times 2$ matrices with integer entries and determinant 1. Show that matrix multiplication makes this set a group. Is it abelian? Is it finite?
+
+\paragraph{Exercise 3} Let $G$ be a group and let $H\subseteq G$ be a nonempty subset. Show that $H$ is a subgroup if and only if $xy^{-1}\in H$ for all $x,y\in H$.
+
+\paragraph{Exercise 4} Write down all subgroups of $\mathbb{Z}/6\mathbb{Z}$.
+
+\paragraph{Exercise 5} Why does $\mathbb{Z}/7\mathbb{Z}$ have no subgroups other than $[0]$ and itself?
+
+\paragraph{Exercise 6} Let $H$ be a non-empty, finite subset of a (not necessarily finite) group $G$. Show that if $xy\in H$ holds for all $x,y\in H$ then $H$ is a subgroup. Then give an example showing that this does not hold if $H$ has infinitely many elements.
+
+\paragraph{Exercise 7} Let $\circ$ be an associative composition on a set $G$. Show that no matter how the brackets are put in the product $s_{1}\circ s_{2}\circ\cdots\circ s_{n}$ the result is always equal to $(\ldots((s_{1}\circ s_{2})\circ s_{3})\ldots)$.
